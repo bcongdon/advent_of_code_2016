@@ -2,15 +2,11 @@ from collections import Counter
 
 
 def decrypt_message(lines):
-    counters = map(lambda _: Counter(), range(len(lines[0])))
-    [counters[i].update(c) for line in lines for i, c in enumerate(line)]
-    return ''.join(map(lambda x: x.most_common(1)[0][0], counters))
+    return ''.join(Counter(i).most_common()[0][0] for i in zip(*lines))
 
 
 def decrypt_message_p2(lines):
-    counters = map(lambda _: Counter(), range(len(lines[0])))
-    [counters[i].update(c) for line in lines for i, c in enumerate(line)]
-    return ''.join(map(lambda x: x.most_common()[-1][0], counters))
+    return ''.join(Counter(i).most_common()[-1][0] for i in zip(*lines))
 
 
 def read_and_strip(fname):
