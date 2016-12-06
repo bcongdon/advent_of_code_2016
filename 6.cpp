@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <cassert>
+#include <ctime>
 using namespace std;
 
 vector<string> read_file(string fname) {
@@ -53,6 +54,20 @@ int main() {
     assert(!decrypt(input_test, 1).compare("easter"));
     assert(!decrypt(input_test, 2).compare("advent"));
 
-    printf("Part 1: %s\n", decrypt(input, 1).c_str());
-    printf("Part 2: %s\n", decrypt(input, 2).c_str());
+    clock_t start, end;
+    string res;
+    int duration;
+
+    start = clock();
+    res = decrypt(input, 1);
+    end = clock();
+    duration = (end - start) * 1000000.0 / CLOCKS_PER_SEC;
+    printf("Part 1: %s (%d usec)\n", res.c_str(), duration);
+
+    start = clock();
+    res = decrypt(input, 2);
+    end = clock();
+    duration = (end - start) * 1000000.0 / CLOCKS_PER_SEC;
+    printf("Part 2: %s (%d usec)\n", res.c_str(), duration);
+
 }
