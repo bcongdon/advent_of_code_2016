@@ -13,5 +13,5 @@ main = do
     input <- readFile "3.txt"
     let tris = map line_to_int $ lines input
     let num_valid = count $ map valid_tri tris
-    putStrLn $ show num_valid
+    putStrLn $ "Part 1: " ++ show num_valid
     return 0

@@ -1,6 +1,3 @@
-{-# LANGUAGE ViewPatterns #-}
-
-
 import Data.List.Split
 import qualified Data.Text as Text
 

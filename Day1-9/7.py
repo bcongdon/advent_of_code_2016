@@ -16,10 +16,8 @@ def get_aba(a):
 
 
 def supports_tls(line):
-    pat = re.compile(r'\[|\]')
-    arr = pat.split(line)
-    found = False
-    for idx, i in enumerate(arr):
+    pat, found = re.compile(r'\[|\]'), False
+    for idx, i in enumerate(pat.split(line)):
         res = contains_abba(i)
         if idx % 2 == 0 and res:
             found = True
