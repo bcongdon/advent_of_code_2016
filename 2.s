@@ -1,3 +1,8 @@
+# Day 2 in MIPS
+#
+# Run with `QtSpim -file helper.s 2.s`
+# QtSpim can be downloaded from http://spimsimulator.sourceforge.net/
+
 .data
 puzzle_test: .asciiz "ULL
 RRDDD
@@ -10,47 +15,102 @@ DDRLLLDLRRURRDLDDRUURRURRLRRRRUURUURDLURRRDDLRUDRURLUURLLRRLRLURLURURDULLLLDLRUR
 RRRDRLRURLRRLUURDRLDUURURLRDRRUDLLUUDURULLUURDLLDRRLURRUDUUDRRURLRRDULLDDLRRRUDUUDUUDLDDDLUUDLDULDDULLDUUUUDDUUDUDULLDDURRDLRRUDUDLRDUULDULRURRRLDLLURUDLDDDRRLRDURDLRRLLLRUDLUDRLLLRLLRRURUDLUDURLDRLRUDLRUULDRULLRLDRDRRLDDDURRRUDDDUDRRDRLDDRDRLLRLLRDLRDUDURURRLLULRDRLRDDRUULRDDRLULDLULURDLRUDRRDDDLDULULRDDRUDRLRDDRLDRDDRRRDUURDRLLDDUULRLLLULLDRDUDRRLUUURLDULUUURULLRLUDLDDLRRDLLRDDLRDRUUDURDDLLLDUUULUUDLULDUDULDRLRUDDURLDDRRRDLURRLLRRRUDDLDDRURDUULRUURDRRURURRRUUDUDULUDLUDLLLUUUULRLLRRRRDUDRRDRUDURLUDDLDRDLDDRULLRRULDURUL
 DLLLRDDURDULRRLULURRDULDLUDLURDDURRLLRRLLULRDLDRDULRLLRDRUUULURRRLLRLDDDRDRRULDRRLLLLDLUULRRRURDDRULLULDDDLULRLRRRUDRURULUDDRULDUDRLDRRLURULRUULLLRUURDURLLULUURUULUUDLUDLRRULLLRRLRURDRRURDRULRURRUDUDDDRDDULDLURUDRDURLDLDLUDURLLRUULLURLDDDURDULRLUUUDLLRRLLUURRDUUDUUDUURURDRRRRRRRRRUDULDLULURUDUURDDULDUDDRDDRDRLRUUUUDLDLRDUURRLRUUDDDDURLRRULURDUUDLUUDUUURUUDRURDRDDDDULRLLRURLRLRDDLRUULLULULRRURURDDUULRDRRDRDLRDRRLDUDDULLDRUDDRRRD"
 
-intro_text: .asciiz "Part 1: "
+.align 4
+part2_map: .asciiz "0010002340567890ABC000D00"
+
+
+intro_text1: .asciiz "Part 1: "
+intro_text2: .asciiz "Part 2: "
 
 .text
 main:
-        la      $a0, intro_text
+# part1 #########################################################
+part1:  la      $a0, intro_text1
         jal     print_string
         la      $s0, puzzle     # s0 = puzzle pointer
         li      $s2, 4          # s2 = current button idx
-loop:
-        lb      $a0, 0($s0)
-        beqz    $a0, final_button
-        beq     $a0, '\n', found_button
-        beq     $a0, 'U', up
-        beq     $a0, 'L', left
-        beq     $a0, 'R', right
-down:
-        bgt     $s2, 5, loop_continue
+loop1:  lb      $a0, 0($s0)
+        beqz    $a0, final_button1
+        beq     $a0, '\n', found_button1
+        beq     $a0, 'U', up1
+        beq     $a0, 'L', left1
+        beq     $a0, 'R', right1
+
+down1:  bgt     $s2, 5, loop_continue1
         add     $s2, $s2, 3
-        j       loop_continue
-left:
-        rem     $t0, $s2, 3
-        beq     $t0, 0, loop_continue
+        j       loop_continue1
+
+left1:  rem     $t0, $s2, 3
+        beq     $t0, 0, loop_continue1
         sub     $s2, $s2, 1
-        j       loop_continue
-up:
-        blt     $s2, 3, loop_continue
+        j       loop_continue1
+
+up1:    blt     $s2, 3, loop_continue1
         sub     $s2, $s2, 3
-        j       loop_continue
-right:
-        rem     $t0, $s2, 3
-        beq     $t0, 2, loop_continue
+        j       loop_continue1
+
+right1:  rem     $t0, $s2, 3
+        beq     $t0, 2, loop_continue1
         add     $s2, $s2, 1
-loop_continue:
+
+loop_continue1:
         add     $s0, $s0, 1
-        j       loop
-found_button:
+        j       loop1
+
+found_button1:
         add     $a0, $s2, 1
-        jal     print_int_and_space
-        j       loop_continue
-final_button:
+        jal     print_int
+        j       loop_continue1
+
+final_button1:
         add     $a0, $s2, 1
-        jal     print_int_and_space
+        jal     print_int
+        jal     print_newline
+
+# part2 #########################################################
+part2:
+        la      $a0, intro_text2
+        jal     print_string
+        la      $s0, puzzle      # s0 = puzzle pointer
+        li      $s2, 10          # s2 = current button idx
+        la      $s3, part2_map
+
+loop2:  lb      $a0, 0($s0)
+        beqz    $a0, final_button2
+        beq     $a0, '\n', found_button2
+        beq     $a0, 'U', up2
+        beq     $a0, 'L', left2
+        beq     $a0, 'R', right2
+down2:  bgt     $s2, 19, loop_continue2
+        add     $t0, $s2, 5
+        j       part2_check
+up2:    blt     $s2, 5, loop_continue2
+        sub     $t0, $s2, 5
+        j       part2_check
+left2:  rem     $t0, $s2, 5
+        beqz    $t0, loop_continue2
+        sub     $t0, $s2, 1
+        j       part2_check
+right2: rem     $t0, $s2, 5
+        beq     $t0, 4, loop_continue2
+        add     $t0, $s2, 1
+part2_check:
+        add     $t1, $s3, $t0
+        lb      $t1, 0($t1)
+        beq     $t1, '0', loop_continue2
+        move    $s2, $t0
+loop_continue2:
+        add     $s0, $s0, 1
+        j       loop2
+found_button2:
+        add     $t0, $s3, $s2
+        lb      $a0, 0($t0)
+        jal     print_char
+        j       loop_continue2
+final_button2:
+        add     $t0, $s3, $s2
+        lb      $a0, 0($t0)
+        jal     print_char
+
 done:
-        j done
+        j       done

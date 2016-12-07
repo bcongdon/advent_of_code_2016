@@ -18,18 +18,38 @@ print_string:
         jr      $ra
 
 
-# print int and space ##################################################
+# print int ##################################################
 #
 # argument $a0: number to print
 # returns       nothing
 
-.globl print_int_and_space
-print_int_and_space:
+.globl print_int
+print_int:
         li      $v0, PRINT_INT  # load the syscall option for printing ints
         syscall                 # print the number
+        
+        jr      $ra             # return to the calling procedure
 
-        li      $a0, ' '        # print a black space
+# print newline ########################################################
+#
+# no arguments
+# returns       nothing
+
+.globl print_newline
+print_newline:
+        li      $a0, '\n'       # print a newline
         li      $v0, PRINT_CHAR # load the syscall option for printing chars
         syscall                 # print the char
+        jr      $ra
+
+# print char and space #################################################
+#
+# argument $a0: character to print
+# returns       nothing
+
+.globl print_char
+print_char:
+        li      $v0, PRINT_CHAR # load the syscall option for printing chars
+        syscall                 # print the number
         
         jr      $ra             # return to the calling procedure
