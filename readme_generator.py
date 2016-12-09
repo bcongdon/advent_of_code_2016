@@ -16,7 +16,9 @@ extensions = {
     'py': 'Python',
     's': 'MIPS',
     'hs': 'Haskell',
-    'cpp': 'C++'
+    'cpp': 'C++',
+    'c': 'C',
+    'rb': 'Ruby'
 }
 
 if __name__ == '__main__':
