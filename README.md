@@ -24,3 +24,15 @@
 * Day 8:  :gift:
     * [C](Day1-9/8.c)
     * [Python](Day1-9/8.py)
+* Day 9:  :bell:
+    * [Python](Day1-9/9.py)
+* Day 10:  :tada:
+    * [Python](Day10-19/10.py)
+* Day 11:  :santa:
+    * [Python](Day10-19/11.py)
+    * [Swift](Day10-19/11.swift)
+* Day 12:  :star2:
+    * [Python](Day10-19/12.py)
+    * [Ruby](Day10-19/12.rb)
+* Day 13:  :snowflake:
+    * [Python](Day10-19/13.py)
