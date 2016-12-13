@@ -18,7 +18,8 @@ extensions = {
     'hs': 'Haskell',
     'cpp': 'C++',
     'c': 'C',
-    'rb': 'Ruby'
+    'rb': 'Ruby',
+    'swift': 'Swift'
 }
 
 if __name__ == '__main__':
