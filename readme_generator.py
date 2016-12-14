@@ -19,7 +19,8 @@ extensions = {
     'cpp': 'C++',
     'c': 'C',
     'rb': 'Ruby',
-    'swift': 'Swift'
+    'swift': 'Swift',
+    'java': 'Java'
 }
 
 if __name__ == '__main__':
@@ -33,10 +34,12 @@ if __name__ == '__main__':
         for fn in os.listdir(fdr):
             try:
                 name, ext = fn.split('.')
-                day = int(name)
-            except ValueError:
+                day = next(int(name[i:]) for i in range(len(name)) if name[i:].isdigit())
+            except StopIteration:
                 pass
                 # print("Coundn't parse: %s" % fn)
+            except ValueError:
+                pass
             else:
                 if ext in extensions and day == i:
                     full = os.path.join(fdr, fn)

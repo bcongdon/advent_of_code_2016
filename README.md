@@ -37,3 +37,6 @@
     * [Ruby](Day10-19/12.rb)
 * Day 13:  :snowflake:
     * [Python](Day10-19/13.py)
+* Day 14:  :snowman:
+    * [Python](Day10-19/14.py)
+    * [Java](Day10-19/Day14.java)
