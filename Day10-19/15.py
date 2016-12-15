@@ -8,7 +8,7 @@ def parse_input(inp):
 
 def check_solution(setup, time):
     return all((setup[i][1] + time + i + 1) % setup[i][0] == 0
-               for i in range(len(setup)))
+               for i in xrange(len(setup)))
 
 
 def get_first_drop_time(init):
@@ -18,7 +18,7 @@ def get_first_drop_time(init):
 
 
 if __name__ == '__main__':
-    with open('15.txt', 'r')as f:
+    with open('15.txt', 'r') as f:
         setup = parse_input(f.readlines())
         print("Part 1: %s" % get_first_drop_time(setup))
         setup.append((11, 0))
