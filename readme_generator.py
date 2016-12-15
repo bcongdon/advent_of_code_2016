@@ -20,7 +20,8 @@ extensions = {
     'c': 'C',
     'rb': 'Ruby',
     'swift': 'Swift',
-    'java': 'Java'
+    'java': 'Java',
+    'js': 'Javascript'
 }
 
 if __name__ == '__main__':

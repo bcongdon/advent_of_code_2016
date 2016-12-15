@@ -1,13 +1,7 @@
 import re
 import itertools
 
-
-def contains_abba(a):
-    if len(a) < 4:
-        return False
-    return any(a[i] == a[i+3] and a[i+1] == a[i+2] and
-               a[i] != a[i+1]
-               for i in range(len(a) - 3))
+abba_pat = re.compile(r'(.)((?!\1).)\2\1')
 
 
 def get_aba(a):
@@ -18,7 +12,7 @@ def get_aba(a):
 def supports_tls(line):
     pat, found = re.compile(r'\[|\]'), False
     for idx, i in enumerate(pat.split(line)):
-        res = contains_abba(i)
+        res = abba_pat.search(i)
         if idx % 2 == 0 and res:
             found = True
         elif idx % 2 == 1 and res:
