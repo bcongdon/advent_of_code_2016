@@ -3,8 +3,12 @@ from collections import deque
 
 
 def pathfind(code, part=1):
-    bfs_q = deque([(0, 0, '')])
-    solutions = []
+    bfs_q, solutions = deque([(0, 0, '')]), []
+    dirs = [(0, -1, 'U'),
+            (0, 1, 'D'),
+            (-1, 0, 'L'),
+            (1, 0, 'R')
+            ]
     while bfs_q:
         x, y, path = bfs_q.popleft()
         if x > 3 or x < 0 or y > 3 or y < 0:
@@ -16,14 +20,10 @@ def pathfind(code, part=1):
                 solutions.append(len(path))
             continue
         h = hashlib.md5(code + path).hexdigest()[:4]
-        if h[0] in 'bcdef':
-            bfs_q.append((x, y - 1, path + 'U'))
-        if h[1] in 'bcdef':
-            bfs_q.append((x, y + 1, path + 'D'))
-        if h[2] in 'bcdef':
-            bfs_q.append((x - 1, y, path + 'L'))
-        if h[3] in 'bcdef':
-            bfs_q.append((x + 1, y, path + 'R'))
+        for i in xrange(len(dirs)):
+            if h[i] in 'bcdef':
+                dx, dy, p = dirs[i]
+                bfs_q.append((x + dx, y + dy, path + p))
     if part == 2:
         return max(solutions)
 
