@@ -1,13 +1,16 @@
 def generate_pattern(seed, rows):
-    out = [[i == '^' for i in seed]]
-    while len(out) < rows:
-        c = []
-        for i in range(len(seed)):
-            l = out[-1][i - 1] if i > 0 else False
-            r = out[-1][i + 1] if i < len(seed) - 1 else False
-            c.append(l ^ r)
-        out.append(c)
-    return out
+    r = row_generator(seed)
+    return [r.next() for _ in range(rows)]
+
+
+def row_generator(seed):
+    prev = [i == '^' for i in seed]
+    yield prev
+    while True:
+        c = [(i > 0 and prev[i-1]) ^ (i+1 < len(seed) and prev[i+1])
+             for i in range(len(seed))]
+        prev = c
+        yield c
 
 
 def prettify(arr):
@@ -24,4 +27,8 @@ if __name__ == '__main__':
     with open('18.txt', 'r') as f:
         inp = f.read()
         print("Part 1: %s" % num_safe(generate_pattern(inp, 40)))
-        print("Part 2: %s" % num_safe(generate_pattern(inp, 400000)))
+
+        p2, r = 0, row_generator(inp)
+        for i in range(400000):
+            p2 += sum(1 if not i else 0 for i in r.next())
+        print("Part 2: %s" % p2)
