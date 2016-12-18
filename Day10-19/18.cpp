@@ -12,8 +12,8 @@ int num_safe_tiles(string inp, int rows) {
             num_safe ++;
         }
     }
+    bool *n_row = new bool[inp.length()];
     for(int r = 0; r < rows - 1; r++) {
-        bool *n_row = new bool[inp.length()];
         for(int i = 0; i < inp.length(); i++){
             if((i > 0 && curr[i-1]) ^ (i+1 < inp.length() && curr[i+1])) {
                 n_row[i] = true;
@@ -23,10 +23,12 @@ int num_safe_tiles(string inp, int rows) {
                 num_safe ++;
             }
         }
-        delete[] curr;
+        bool *temp = curr;
         curr = n_row;
+        n_row = temp;
     }
     delete[] curr;
+    delete[] n_row;
     return num_safe;
 }
 
