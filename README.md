@@ -43,3 +43,11 @@
 * Day 15:  :sparkles:
     * [Javascript](Day10-19/15.js)
     * [Python](Day10-19/15.py)
+* Day 16:  :fire:
+    * [Javascript](Day10-19/16.js)
+    * [Python](Day10-19/16.py)
+* Day 17:  :christmas_tree:
+    * [Python](Day10-19/17.py)
+    * [Java](Day10-19/Day17.java)
+* Day 18:  :gift:
+    * [Python](Day10-19/18.py)
