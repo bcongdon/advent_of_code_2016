@@ -52,3 +52,6 @@
 * Day 18:  :gift:
     * [C++](Day10-19/18.cpp)
     * [Python](Day10-19/18.py)
+* Day 19:  :bell:
+    * [C](Day10-19/19.c)
+    * [Python](Day10-19/19.py)
