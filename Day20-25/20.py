@@ -1,4 +1,4 @@
-def lowest_ip(blocklist):
+def valid_ips(blocklist):
     ranges = [map(int, e.strip().split('-')) for e in blocklist]
     ranges.sort(key=lambda x: x[0])
     merged = [ranges[0]]
@@ -21,6 +21,6 @@ def lowest_ip(blocklist):
 
 if __name__ == '__main__':
     with open('20.txt', 'r') as f:
-        f, n = lowest_ip(f.readlines())
+        f, n = valid_ips(f.readlines())
         print("Part 1: %s" % f)
         print("Part 2: %s" % n)

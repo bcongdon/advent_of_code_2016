@@ -55,3 +55,6 @@
 * Day 19:  :bell:
     * [C](Day10-19/19.c)
     * [Python](Day10-19/19.py)
+* Day 20:  :tada:
+    * [C++](Day20-25/20.cpp)
+    * [Python](Day20-25/20.py)
