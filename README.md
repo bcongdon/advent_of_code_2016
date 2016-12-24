@@ -58,3 +58,11 @@
 * Day 20:  :tada:
     * [C++](Day20-25/20.cpp)
     * [Python](Day20-25/20.py)
+* Day 21:  :santa:
+    * [Python](Day20-25/21.py)
+* Day 22:  :star2:
+    * [Python](Day20-25/22.py)
+* Day 23:  :snowflake:
+    * [Python](Day20-25/23.py)
+* Day 24:  :snowman:
+    * [Python](Day20-25/24.py)
