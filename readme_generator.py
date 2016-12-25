@@ -21,7 +21,8 @@ extensions = {
     'rb': 'Ruby',
     'swift': 'Swift',
     'java': 'Java',
-    'js': 'Javascript'
+    'js': 'Javascript',
+    'go': 'Go'
 }
 
 if __name__ == '__main__':
