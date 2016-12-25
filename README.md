@@ -66,3 +66,5 @@
     * [Python](Day20-25/23.py)
 * Day 24:  :snowman:
     * [Python](Day20-25/24.py)
+* Day 25:  :sparkles:
+    * [Python](Day20-25/25.py)
