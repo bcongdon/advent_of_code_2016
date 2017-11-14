@@ -3,6 +3,7 @@
 
 ## Solutions 
 * Day 1:  :santa:
+    * [Go](Day1-9/1.go)
     * [Haskell](Day1-9/1.hs)
     * [Python](Day1-9/1.py)
 * Day 2:  :star2:

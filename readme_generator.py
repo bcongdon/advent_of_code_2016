@@ -49,4 +49,4 @@ if __name__ == '__main__':
                     sol_for_today = True
         if sol_for_today:
             out += temp
-    print out
+    print(out)
