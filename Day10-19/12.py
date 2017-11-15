@@ -8,7 +8,7 @@ def simulate(inst, initial_values={}):
             return registers[i]
         return int(i)
 
-    instructs = map(lambda x: x.split(), inst)
+    instructs = list(map(lambda x: x.split(), inst))
     pc = 0
     while pc < len(instructs):
         op = instructs[pc]
@@ -24,7 +24,7 @@ def simulate(inst, initial_values={}):
                 pc += get_val(op[2])
                 continue
         else:
-            print "No opcode for %s" % op[0]
+            print("No opcode for %s" % op[0])
             break
         pc += 1
     return registers

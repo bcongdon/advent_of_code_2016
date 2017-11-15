@@ -22,6 +22,7 @@
     * [C++](Day1-9/6.cpp)
     * [Python](Day1-9/6.py)
 * Day 7:  :christmas_tree:
+    * [Go](Day1-9/7.go)
     * [Python](Day1-9/7.py)
 * Day 8:  :gift:
     * [C](Day1-9/8.c)
@@ -35,6 +36,7 @@
     * [Python](Day10-19/11.py)
     * [Swift](Day10-19/11.swift)
 * Day 12:  :star2:
+    * [Go](Day10-19/12.go)
     * [Python](Day10-19/12.py)
     * [Ruby](Day10-19/12.rb)
 * Day 13:  :snowflake:
