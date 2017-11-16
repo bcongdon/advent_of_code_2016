@@ -16,6 +16,7 @@
 * Day 4:  :snowman:
     * [Python](Day1-9/4.py)
 * Day 5:  :sparkles:
+    * [Go](Day1-9/5.go)
     * [Python](Day1-9/5.py)
     * [Ruby](Day1-9/5.rb)
 * Day 6:  :fire:
