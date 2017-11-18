@@ -56,6 +56,7 @@
     * [Java](Day10-19/Day17.java)
 * Day 18:  :gift:
     * [C++](Day10-19/18.cpp)
+    * [Go](Day10-19/18.go)
     * [Python](Day10-19/18.py)
 * Day 19:  :bell:
     * [C](Day10-19/19.c)
